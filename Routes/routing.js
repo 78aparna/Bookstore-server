@@ -3,6 +3,7 @@ const express = require('express')
 const userController = require('../controller/usercontroller')
 const bookController = require('../controller/bookController')
 const jwtMiddleware = require('../Middlewares/jwtMiddleware')
+const multerMiddleware = require('../Middlewares/multerMiddleware')
 //create Router object
 const router = new express.Router()
 
@@ -20,5 +21,5 @@ router.post('/google/sign-in',userController.googleLoginController)
 module.exports = router
 //............authorised user.................
 
-router.post('/user/book/add',jwtMiddleware,bookController.addBookController)
+router.post('/user/book/add',jwtMiddleware,multerMiddleware.array('uploadImages',3),bookController.addBookController)
 module.exports = router

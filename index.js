@@ -15,6 +15,8 @@ bookstoreServer.use(cors())
 bookstoreServer.use(express.json())
 //use router in server
 bookstoreServer.use(router)
+//enable ststic files
+bookstoreServer.use('/uploads',express.static('./uploads'))
 //create a port where server shold listen in web
 const PORT = 3000
 //server listen in thet port
